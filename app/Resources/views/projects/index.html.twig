@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <ul>
+    {% for project in projects%}
+        <li><strong>{{project.name}}</strong> <em>({{project.description}})</em> - {{project.targetAmount|number_format(2,","," ")}} €</li>
+  {%endfor%}
+    </ul>
+{% endblock %}
+
+{% block stylesheets %}
+
+{% endblock %}
