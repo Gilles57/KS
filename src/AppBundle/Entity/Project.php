@@ -137,5 +137,52 @@ class Project
     {
         return $this->targetAmount;
     }
-}
 
+    /**
+     * Set web
+     *
+     * @param string $web
+     *
+     * @return Project
+     */
+    public function setWeb($web)
+    {
+        $this->web = $web;
+
+        return $this;
+    }
+
+    /**
+     * Get web
+     *
+     * @return string
+     */
+    public function getWeb()
+    {
+        return $this->web;
+    }
+
+    /**
+     * Set expiredOn
+     *
+     * @param \DateTime $expiredOn
+     *
+     * @return Project
+     */
+    public function setExpiredOn($expiredOn)
+    {
+        $this->expired_on = $expiredOn;
+
+        return $this;
+    }
+
+    /**
+     * Get expiredOn
+     *
+     * @return \DateTime
+     */
+    public function getExpiredOn()
+    {
+        return $this->expired_on;
+    }
+}

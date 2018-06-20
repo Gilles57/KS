@@ -7,6 +7,8 @@ imports:
 # http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: fr
+    cache_provider_type: file_system
+
 
 framework:
     #esi:             ~
@@ -68,3 +70,14 @@ swiftmailer:
     username:  "%mailer_user%"
     password:  "%mailer_password%"
     spool:     { type: memory }
+
+doctrine_cache:
+    aliases:
+        markdown_cache: my_markdown_cache
+
+    providers: 
+        my_markdown_cache:
+            type : '%cache_provider_type%'
+            file_system :
+                directory: '%kernel.cache_dir%/markdown'
+                extension: 'txt'

@@ -12,3 +12,9 @@ services:
         class: Twig_Extensions_Extension_Intl
         tags:
             - { name: twig.extension }
+            
+
+    app.markdown_transformer:
+        class: AppBundle\Service\MarkdownTransformer
+        arguments: ["@markdown.parser","@markdown_cache"]
+
