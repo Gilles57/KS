@@ -20,7 +20,7 @@ class MarkdownTransformer {
         if ($this->cache->contains($key)) {
             return $this->cache->fetch($key);
         }
-        sleep(1);
+//        sleep(1);
         $content = $this->markdownParser->transform($content);
         $this->cache->save($key, $content);
         return $content;

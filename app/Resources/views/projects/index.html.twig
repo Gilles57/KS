@@ -2,21 +2,20 @@
 
 {% block body %}
     <hr>
-    <h1>{{projects|length}} projet(s) :</h1>
-    {{sMD|raw}}
+    <h1> {{pluralize(projects|length,'projet')}} :</h1>
     <hr>
     {% for project in projects%}
-    <article>   
-        <h1>{{project.name}}</h1>
-        <p>{{project.description|markdown}}</p>
-    <ul>
-        <li>Prix : {{project.targetAmount|number_format(2,","," ")}} €</li> 
-        <li>Date d'échéance : {{project.expiredOn|date('d M Y')}} </li> 
-        <li>Web : {{project.web}}</li> 
-    </ul>
-    </article>   
-    <hr>
-  {%endfor%}
+        <article>   
+            <h1>{{project.name}}</h1>
+            <p>{{project.description|truncate(50)|markdownify}}</p>
+            <ul>
+                <li>Prix : {{format_price(project)}} </li> 
+                <li>Date d'échéance : {{project.expiredOn|date('d M Y')}} </li> 
+                <li>Web : {{project.web}}</li> 
+            </ul>
+        </article>   
+        <hr>
+    {%endfor%}
 {% endblock %}
 
 {% block stylesheets %}
