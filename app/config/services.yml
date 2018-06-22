@@ -6,26 +6,25 @@ parameters:
 services:
 #    service_name:
 #        class: AppBundle\Directory\ClassName
-#        arguments: ["@another_service_name", "plain_value", "%parameter_name%"]
+#        arguments: ['@another_service_name', 'plain_value', '%parameter_name%']
 
     twig.extension.intl:
         class: Twig_Extensions_Extension_Intl
         tags:
             - { name: twig.extension }
-            
+
     twig.extension.text:
         class: Twig_Extensions_Extension_Text
         tags:
             - { name: twig.extension }
-            
 
     app.markdown_transformer:
         class: AppBundle\Service\MarkdownTransformer
-        arguments: ["@markdown.parser","@markdown_cache"]
+        arguments: ['@markdown.parser','@markdown_cache']
 
     app.markdown_extension:
         class: AppBundle\Twig\MarkdownExtension
-        arguments: ["@app.markdown_transformer"]
+        arguments: ['@app.markdown_transformer']
         tags:
             - { name: twig.extension }
 
