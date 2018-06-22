@@ -6,7 +6,7 @@
     <hr>
     {% for project in projects%}
         <article>   
-            <h1>({{project.id}}){{project.name}}</h1>
+            <a href="{{path('projet',{'name':project.name})}}"><h1>({{project.id}}){{project.name}}</h1></a>
             <p>{{project.description|truncate(50)|markdownify}}</p>
             <ul>
                 <li>Prix : {{format_price(project)}} </li> 

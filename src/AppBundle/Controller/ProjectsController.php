@@ -9,7 +9,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 class ProjectsController extends Controller
 {
     /**
-     * @Route("/projets", name="homepage")
+     * @Route("/projets", name="projets")
+     * @Route("/", name="homepage")
      */
     public function indexAction()
     {
@@ -28,4 +29,6 @@ class ProjectsController extends Controller
     {
         return $this->render('projects/show.html.twig', compact('project'));
     }
+    
+    
 }

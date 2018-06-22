@@ -1,15 +1,18 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-        <article>   
-            <h1>{{project.name}}</h1>
-            <p>{{project.description|markdownify}}</p>
-            <ul>
-                <li>Prix : {{format_price(project)}} </li> 
-                <li>Date d'échéance : {{project.expiredOn|date('d M Y')}} </li> 
-                <li>Web : {{project.web}}</li> 
-            </ul>
-        </article>   
+    <article>   
+        <h1>{{project.name}}</h1>
+        <p>{{project.description|markdownify}}</p>
+        <ul>
+            <li>Prix : {{format_price(project)}} </li> 
+            <li>Date d'échéance : {{project.expiredOn|date('d M Y')}} </li> 
+            <li>Web : {{project.web}}</li> 
+        </ul>
+    </article>  
+
+    <a href ="{{  path('homepage')}}">  &larr; Tous les projets.</a>
+
 {% endblock %}
 
 {% block stylesheets %}
