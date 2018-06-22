@@ -1,0 +1,6 @@
+services:
+    app.markdown_transformer: '@AppBundle\Service\MarkdownTransformer'
+
+    app.markdown_extension: '@AppBundle\Twig\MarkdownExtension'
+
+    app.twig_extension: '@AppBundle\Twig\AppExtension'
