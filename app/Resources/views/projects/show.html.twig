@@ -1,21 +1,15 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <hr>
-    <h1> {{pluralize(projects|length,'projet')}} :</h1>
-    <hr>
-    {% for project in projects%}
         <article>   
-            <h1>({{project.id}}){{project.name}}</h1>
-            <p>{{project.description|truncate(50)|markdownify}}</p>
+            <h1>{{project.name}}</h1>
+            <p>{{project.description|markdownify}}</p>
             <ul>
                 <li>Prix : {{format_price(project)}} </li> 
                 <li>Date d'échéance : {{project.expiredOn|date('d M Y')}} </li> 
                 <li>Web : {{project.web}}</li> 
             </ul>
         </article>   
-        <hr>
-    {%endfor%}
 {% endblock %}
 
 {% block stylesheets %}

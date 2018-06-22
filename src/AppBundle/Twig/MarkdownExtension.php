@@ -2,12 +2,11 @@
 
 namespace AppBundle\Twig;
 
-use Twig\Extension\AbstractExtension;
-use Twig\TwigFilter;
 use AppBundle\Service\MarkdownTransformer;
+use Twig\TwigFilter;
 
 
-class MarkdownExtension extends AbstractExtension
+class MarkdownExtension extends \Twig_Extension
 {
     private $markdownTransformer;
     
@@ -18,7 +17,7 @@ class MarkdownExtension extends AbstractExtension
     public function getFilters()
     {
         return
-            [new TwigFilter('markdownify', 
+            [new \Twig_SimpleFilter('markdownify', 
             [$this, 'parseMarkdown'],
             ['is_safe'=>['html']])]
         ;
