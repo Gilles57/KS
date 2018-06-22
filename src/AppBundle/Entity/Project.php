@@ -185,4 +185,8 @@ class Project
     {
         return $this->expired_on;
     }
+    
+    public function isFree() {
+        return $this->targetAmount == 0;
+    }
 }

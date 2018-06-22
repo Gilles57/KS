@@ -2,10 +2,11 @@
 
 namespace AppBundle\Twig;
 
+use AppBundle\Entity\Project;
+use DateTime;
 use Symfony\Component\Config\Definition\Exception\Exception;
 use Twig_Extension;
 use Twig_SimpleFunction;
-use AppBundle\Entity\Project;
 
 
 class AppExtension extends Twig_Extension
@@ -15,16 +16,27 @@ class AppExtension extends Twig_Extension
     {
         return [
             new Twig_SimpleFunction('pluralize', [$this, 'pluralize']),
-            new Twig_SimpleFunction('format_price', [$this, 'formatPrice']),
+            new Twig_SimpleFunction('format_price', [$this, 'formatPrice'], ['is_safe'=>['html']]),
+            new Twig_SimpleFunction('format_date', [$this, 'formatDate']),
         ];
     }
     
     public function formatPrice(Project $project) {
-        if ($project->getTargetAmount()==0){
-            return 'Gratuit' ;
+        if ($project->isFree()){
+            return '<strong>Gratuit</strong>' ;
         } else {
             return twig_localized_currency_filter($project->getTargetAmount(), "EUR", "en");
         }
+    }
+    
+    public function formatDate(Project $project) {
+        if ($project->getExpiredOn()==null){
+            return 'N.C.' ;
+        } 
+        if ($project->getExpiredOn()>=new DateTime()){
+            return  'Arrivé à expiration';
+        }
+        return $project->getExpiredOn()->diff(new DateTime())->format('%a jours restants') ;
     }
     
     

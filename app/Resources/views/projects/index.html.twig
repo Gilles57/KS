@@ -10,7 +10,7 @@
             <p>{{project.description|truncate(50)|markdownify}}</p>
             <ul>
                 <li>Prix : {{format_price(project)}} </li> 
-                <li>Date d'échéance : {{project.expiredOn|date('d M Y')}} </li> 
+                <li>Date d'échéance : {{format_date(project)}} </li> 
                 <li>Web : {{project.web}}</li> 
             </ul>
         </article>   
@@ -21,3 +21,5 @@
 {% block stylesheets %}
 
 {% endblock %}
+
+{#|date('d M Y')#}

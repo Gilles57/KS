@@ -22,17 +22,10 @@ class ProjectsController extends Controller
     }
     
     /**
-     * @Route("/projets/{id}", name="projet",requirements = {   "id" : "[0-9]+"} )
+     * @Route("/projets/{name}", name="projet")
      */
-    public function showAction($id)
+    public function showAction(Project $project)
     {
-        $em = $this->getDoctrine()->getManager();
-        $rep = $em->getRepository(Project::class);
-        $project = $rep->find($id);
-        
-        if(!$project){
-            throw $this->createNotFoundException("Pas de projet avec ce numéro");
-        }
         return $this->render('projects/show.html.twig', compact('project'));
     }
 }
